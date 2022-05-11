@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: main
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+
+  source:
+    repoURL: {{cookiecutter.gitops_repo}}
+    targetRevision: main
+    path: {{cookiecutter.cluster_name}}/cluster-state
+    directory:
+      recurse: true
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argo-cd
+
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true

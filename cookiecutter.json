@@ -1,0 +1,5 @@
+{
+  "project_name": "gitops",
+  "cluster_name": "dummy",
+  "gitops_repo": "git@github.com:example/gitops.git"
+}

@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubed
+  namespace: argo-cd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://charts.appscode.com/stable
+    chart: kubed
+    targetRevision: "v0.13.2"
+    helm:
+      values: |
+        fullnameOverride: kubed
+        enableAnalytics: false
+        config:
+          clusterName: {{cookiecutter.cluster_name}}
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: kube-system
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

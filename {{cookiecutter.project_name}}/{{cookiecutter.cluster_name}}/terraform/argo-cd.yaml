@@ -1,0 +1,17 @@
+fullnameOverride: argo-cd
+
+applicationSet:
+  enabled: false
+
+notifications:
+  enabled: false
+
+repoServer:
+  image:
+    repository: ghcr.io/shini4i/argocd
+    tag: v2.3.3
+    imagePullPolicy: IfNotPresent
+
+  env:
+    - name: HELM_PLUGINS
+      value: "/home/argocd/.local/share/helm/plugins/"
