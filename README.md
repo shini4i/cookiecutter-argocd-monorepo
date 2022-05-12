@@ -12,3 +12,4 @@ It will generate the bare minimum terraform configuration for ArgoCD configurati
 - [tfswitch](https://tfswitch.warrensbox.com/)
 - [transcrypt](https://github.com/elasticdog/transcrypt)
 - pwgen
+- yq

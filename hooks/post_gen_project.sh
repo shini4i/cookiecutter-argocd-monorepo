@@ -27,6 +27,8 @@ create_gitops_secret() {
   -n argo-cd \
   --dry-run=client -o yaml > {{cookiecutter.cluster_name}}/terraform/secrets/gitops.yaml
   rm -f {{cookiecutter.cluster_name}}/terraform/secrets/.gitkeep
+  echo "Appending required annotations..."
+  yq -i '.metadata.labels."argocd.argoproj.io/secret-type" = "repo-creds"' {{cookiecutter.cluster_name}}/terraform/secrets/gitops.yaml
 }
 
 main() {
