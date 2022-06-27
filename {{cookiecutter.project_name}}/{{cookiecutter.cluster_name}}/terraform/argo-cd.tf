@@ -1,3 +1,12 @@
+resource "kubernetes_namespace" "argo_cd" {
+  metadata {
+    name = "argo-cd"
+    labels = {
+      app = "argo-cd"
+    }
+  }
+}
+
 resource "helm_release" "argo_cd" {
   name      = "argo-cd"
   namespace = "argo-cd"
@@ -11,6 +20,10 @@ resource "helm_release" "argo_cd" {
 
   values = [
     file("argo-cd.yaml")
+  ]
+
+  depends_on = [
+    kubernetes_namespace.argo_cd
   ]
 }
 

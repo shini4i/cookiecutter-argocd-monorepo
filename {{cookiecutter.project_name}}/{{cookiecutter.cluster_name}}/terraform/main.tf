@@ -1,5 +1,5 @@
 terraform {
-  backend = "local"
+  backend "local" {}
 
   required_providers {
     helm = {
@@ -10,7 +10,16 @@ terraform {
       source  = "gavinbunney/kubectl"
       version = "1.14.0"
     }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "2.11.0"
+    }
   }
+}
+
+provider "kubernetes" {
+  config_path    = "~/.kube/config"
+  config_context = "change_me"
 }
 
 provider "helm" {
