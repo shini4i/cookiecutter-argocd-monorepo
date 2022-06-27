@@ -1,5 +1,7 @@
 {
   "project_name": "gitops",
   "cluster_name": "dummy",
-  "gitops_repo": "git@github.com:example/gitops.git"
+  "gitops_repo": "git@github.com:example/gitops.git",
+  "kubeconfig_path": "~/.kube/config",
+  "kubeconfig_context": "change_me"
 }

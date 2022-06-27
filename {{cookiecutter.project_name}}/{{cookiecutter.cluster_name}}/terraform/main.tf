@@ -18,17 +18,17 @@ terraform {
 }
 
 provider "kubernetes" {
-  config_path    = "~/.kube/config"
-  config_context = "change_me"
+  config_path    = "{{ cookiecutter.kubeconfig_path }}"
+  config_context = "{{ cookiecutter.kubeconfig_context }}"
 }
 
 provider "helm" {
   kubernetes {
-    config_path    = "~/.kube/config"
-    config_context = "change_me"
+    config_path    = "{{ cookiecutter.kubeconfig_path }}"
+    config_context = "{{ cookiecutter.kubeconfig_context }}"
   }
 }
 
 provider "kubectl" {
-  config_context = "change_me"
+  config_context = "{{ cookiecutter.kubeconfig_context }}"
 }
