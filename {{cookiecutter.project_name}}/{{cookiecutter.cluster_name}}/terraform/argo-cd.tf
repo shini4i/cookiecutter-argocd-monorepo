@@ -2,7 +2,7 @@ resource "helm_release" "argo_cd" {
   name      = "argo-cd"
   namespace = "argo-cd"
 
-  version = "4.4.0"
+  version = "4.9.7"
 
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
