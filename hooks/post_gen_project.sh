@@ -7,6 +7,11 @@ git_init() {
   git remote add origin {{cookiecutter.gitops_repo}}
 }
 
+pre_commit_install() {
+  echo "Installing pre-commit hooks"
+  pre-commit install
+}
+
 transcrypt_init() {
   echo "Initializing transcrypt"
   transcrypt -c aes-256-cbc -p "$(pwgen 30 1)" --yes
@@ -33,6 +38,7 @@ create_gitops_secret() {
 
 main() {
   git_init
+  pre_commit_install
   transcrypt_init
   generate_ssh_key
   create_gitops_secret

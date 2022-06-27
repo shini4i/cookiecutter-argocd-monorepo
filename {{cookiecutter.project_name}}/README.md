@@ -9,7 +9,7 @@ This is just one of many possible monorepo structures.
                 |                            + templates
                 |                            + values.yaml
                 |                            + secrets.yaml (SOPS encrypted)
-                |  
+                |
                 + cluster-state -+ namespace -+ secrets +- sealedsecret.yaml
                 |                             + app.yaml
                 |
@@ -26,7 +26,7 @@ The technologies used in this project are the following:
 - [SealedSecrets](https://github.com/bitnami-labs/sealed-secrets)
 - [SOPS](https://github.com/mozilla/sops)
 
-Depending on project specifics some of technologies mentioned above can be omitted.
+Depending on project specifics some technologies mentioned above can be omitted.
 
 ## Bootstrap
 ### Provisioning
