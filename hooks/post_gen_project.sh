@@ -15,7 +15,7 @@ pre_commit_install() {
 transcrypt_init() {
   echo "Initializing transcrypt"
   transcrypt -c aes-256-cbc -p "$(pwgen 30 1)" --yes
-  echo "{{cookiecutter.cluster_name}}/terraform/secrets/* filter=crypt diff=crypt merge=crypt" >> .gitattributes
+  echo "{{cookiecutter.cluster_name}}/terraform/deploy/secrets/* filter=crypt diff=crypt merge=crypt" >> .gitattributes
   transcrypt --display
 }
 
@@ -30,10 +30,10 @@ create_gitops_secret() {
   kubectl create secret generic gitops --from-file ssh/sshPrivateKey \
   --from-literal=url={{cookiecutter.gitops_repo}} \
   -n argo-cd \
-  --dry-run=client -o yaml > {{cookiecutter.cluster_name}}/terraform/secrets/gitops.yaml
-  rm -f {{cookiecutter.cluster_name}}/terraform/secrets/.gitkeep
+  --dry-run=client -o yaml > {{cookiecutter.cluster_name}}/terraform/deploy/secrets/gitops.yaml
+  rm -f {{cookiecutter.cluster_name}}/terraform/deploy/secrets/.gitkeep
   echo "Appending required annotations..."
-  yq -i '.metadata.labels."argocd.argoproj.io/secret-type" = "repo-creds"' {{cookiecutter.cluster_name}}/terraform/secrets/gitops.yaml
+  yq -i '.metadata.labels."argocd.argoproj.io/secret-type" = "repo-creds"' {{cookiecutter.cluster_name}}/terraform/deploy/secrets/gitops.yaml
 }
 
 main() {
@@ -42,6 +42,7 @@ main() {
   transcrypt_init
   generate_ssh_key
   create_gitops_secret
+  direnv allow && echo .envrc >> .gitignore
 }
 
 main

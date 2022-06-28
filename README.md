@@ -7,6 +7,7 @@ It will generate the bare minimum terraform configuration for ArgoCD configurati
 
 ## Prerequisites
 - [cookiecutter](https://cookiecutter.readthedocs.io)
+- [direnv](https://direnv.net/)
 - [pre-commit](https://pre-commit.com/)
 - [tfswitch](https://tfswitch.warrensbox.com/)
 - [transcrypt](https://github.com/elasticdog/transcrypt)

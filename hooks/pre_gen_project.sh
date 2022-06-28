@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-dependencies=(pre-commit tfswitch transcrypt kubectl pwgen terraform yq)
+dependencies=(direnv pre-commit tfswitch transcrypt kubectl pwgen terraform yq)
 
 check_if_binary_exists() {
   if ! which "$1" > /dev/null; then
