@@ -3,7 +3,7 @@ version: 3
 projects:
   - name: {{cookiecutter.cluster_name}}
     terraform_version: v1.1.9
-    dir: {{cookiecutter.cluster_name}}/terraform
+    dir: {{cookiecutter.cluster_name}}/terraform/deploy
     workflow: terraform-transcrypt
     autoplan:
       enabled: true
