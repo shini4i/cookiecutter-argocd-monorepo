@@ -1,4 +1,11 @@
+<div align="center">
+
 # cookiecutter-argocd-monorepo
+A cookiecutter template for bootstrapping a gitops monorepo for ArgoCD
+
+<img src="https://raw.githubusercontent.com/shini4i/assets/main/src/cookiecutter/cookiecutter.png" alt="Showcase">
+
+</div>
 
 ## Project description
 This project aims to provide a cookiecutter template for bootstrapping gitops (ArgoCD) monorepo structure.
@@ -15,3 +22,8 @@ It will generate the bare minimum terraform configuration for ArgoCD configurati
 - pwgen
 - terraform
 - yq
+
+## Usage
+```bash
+cookiecutter git@github.com:shini4i/cookiecutter-argocd-monorepo.git
+```
