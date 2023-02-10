@@ -1,2 +1,6 @@
 .idea/
 ssh/
+
+# Terraform files
+**/.terraform
+**/.terraform.lock.hcl
