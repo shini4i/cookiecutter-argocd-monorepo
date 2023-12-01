@@ -9,7 +9,7 @@ notifications:
 repoServer:
   image:
     repository: ghcr.io/shini4i/argocd
-    tag: v2.7.6
+    tag: v2.9.2
     imagePullPolicy: IfNotPresent
 
   env:

@@ -1,6 +1,6 @@
 resource "kubernetes_namespace" "argo_cd" {
   metadata {
-    name = "argo-cd"
+    name   = "argo-cd"
     labels = {
       app = "argo-cd"
     }
@@ -11,7 +11,7 @@ resource "helm_release" "argo_cd" {
   name      = "argo-cd"
   namespace = "argo-cd"
 
-  version = "5.37.0"
+  version = "5.51.5"
 
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
