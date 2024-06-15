@@ -1,18 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sealed-secrets
+  name: reflector
   namespace: argo-cd
 spec:
   project: default
   source:
-    repoURL: https://bitnami-labs.github.io/sealed-secrets/
-    chart: sealed-secrets
-    targetRevision: "2.13.3"
+    repoURL: https://emberstack.github.io/helm-charts
+    chart: reflector
+    targetRevision: "7.1.262"
     helm:
       valuesObject:
-        fullnameOverride: sealed-secrets
-        args: ["--key-renew-period=0", "--update-status"]
+        fullnameOverride: reflector
 
   destination:
     server: https://kubernetes.default.svc
@@ -22,3 +21,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
